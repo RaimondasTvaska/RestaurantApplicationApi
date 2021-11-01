@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">Add new restaurant</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Pavadinimas" [(ngModel)]="name">
+      <input type="text" class="form-control" placeholder="Lankytojų skaičius" [(ngModel)]="customers">      
+      <input type="text" class="form-control" placeholder="Darbuotojų skaičius" [(ngModel)]="employees">
+      <input type="text" class="form-control" placeholder="Šios dienos meniu" [(ngModel)]="menuId">      
+  
+      <button type="button" *ngIf="editMode == false" class="btn btn-outline-primary btn-rounded" (click)="addRestaurant()">Naujas restoranas</button>
+      <!-- <button type="button" *ngIf="editMode == true" class="btn btn-warning" (click)="sendUpdatedMenu()">Atnaujink</button> -->
+    </div>
+  </div>
+  <div>
+    <table class="table table-bordered table-sm">
+      <thead class ="thead-light">
+        <tr>
+          <th scope="col">Pavadinimas</th>
+          <th scope="col">Lankytojų skaičius</th>
+          <th scope="col">Darbuotojų skaičius</th>
+          <th scope="col">Šios dienos meniu</th>          
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor = "let restaurant of restaurants">
+          <td class="mr-2 blue-text table-success">{{restaurant.name}}</td>
+          <td class="mr-2 blue-text table-default">{{restaurant.customers}} vnt.</td>
+          <td class="mr-2 blue-text table-default">{{restaurant.employees}} vnt.</td>
+          <td class="mr-2 blue-text table-info bg-warning">{{restaurant.menuId}}</td>
+
+          <!-- <td><button type="button" class="btn btn-danger" (click)="deleteMenu(menu.id)">Delete</button></td>
+          <td><button type="button" class="btn btn-warning" (click)="updateMenu(menu)">Update</button></td> -->
+        </tr>
+      </tbody>
+  
+    </table>
+  </div>
+  
+  <!-- <p>{{title}}</p>
+  
+  <ul>
+      <li *ngFor = "let menu of menus">
+          Pavadinimas: {{menu.title}} Kaina: {{menu.price}}
+      </li>
+  </ul>
+  
+  
+  Pavadinimas
+  <input type="text" [(ngModel)]="title" /> 
+  Kaina
+  <input type="text" [(ngModel)]="price" /> -->
+   
+  
+  <!-- <button (click)="addMenu()">Add new menu</button> -->
