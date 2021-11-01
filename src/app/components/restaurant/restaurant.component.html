@@ -6,16 +6,23 @@
       <input type="text" class="form-control" placeholder="Pavadinimas" [(ngModel)]="name">
       <input type="text" class="form-control" placeholder="Lankytojų skaičius" [(ngModel)]="customers">      
       <input type="text" class="form-control" placeholder="Darbuotojų skaičius" [(ngModel)]="employees">
-      <input type="text" class="form-control" placeholder="Šios dienos meniu" [(ngModel)]="menuId">      
+      <input type="text" class="form-control" placeholder="Šios dienos meniu" [(ngModel)]="menuId">
+      <select class="form-control" [(ngModel)]="menuId">
+        <option *ngFor="let menu of menus" [value]="menu.id">
+            {{menu.title}}
+          </option>
+      </select>        
   
       <button type="button" *ngIf="editMode == false" class="btn btn-outline-primary btn-rounded" (click)="addRestaurant()">Naujas restoranas</button>
-      <!-- <button type="button" *ngIf="editMode == true" class="btn btn-warning" (click)="sendUpdatedMenu()">Atnaujink</button> -->
+      <button type="button" *ngIf="editMode == true" class="btn btn-warning" (click)="sendUpdatedRestaurant()">Atnaujink</button>
     </div>
   </div>
+ 
   <div>
     <table class="table table-bordered table-sm">
       <thead class ="thead-light">
         <tr>
+          <th scope="col">#</th>
           <th scope="col">Pavadinimas</th>
           <th scope="col">Lankytojų skaičius</th>
           <th scope="col">Darbuotojų skaičius</th>
@@ -24,13 +31,13 @@
       </thead>
       <tbody>
         <tr  *ngFor = "let restaurant of restaurants">
-          <td class="mr-2 blue-text table-success">{{restaurant.name}}</td>
-          <td class="mr-2 blue-text table-default">{{restaurant.customers}} vnt.</td>
-          <td class="mr-2 blue-text table-default">{{restaurant.employees}} vnt.</td>
-          <td class="mr-2 blue-text table-info bg-warning">{{restaurant.menuId}}</td>
+          <td class="mr-2 blue-text table-success text-center">{{restaurant.name}}</td>
+          <td class="mr-2 blue-text table-default text-center">{{restaurant.customers}} vnt.</td>
+          <td class="mr-2 blue-text table-default text-center">{{restaurant.employees}} vnt.</td>
+          <td class="mr-2 blue-text table-info bg-warning text-center">{{restaurant.menuId}}</td>
 
-          <!-- <td><button type="button" class="btn btn-danger" (click)="deleteMenu(menu.id)">Delete</button></td>
-          <td><button type="button" class="btn btn-warning" (click)="updateMenu(menu)">Update</button></td> -->
+          <td><button type="button" class="btn btn-danger" (click)="deleteRestaurant(restaurant.id)">Delete</button></td>
+          <td><button type="button" class="btn btn-warning" (click)="updateRestaurant(restaurant)">Update</button></td>
         </tr>
       </tbody>
   
